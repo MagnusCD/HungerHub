@@ -172,11 +172,8 @@ def validate_item_price():
     return Decimal(item_price_str)
 
 
-
-
 ##############################
 def send_verify_email(to_email, user_verification_key):
-    try:
         # Email and password of the senders Gmail account
         # Enable (turn on) 2 step verification/factor in the google account manager
         # Visit: https://myaccount.google.com/apppasswords
@@ -192,7 +189,7 @@ def send_verify_email(to_email, user_verification_key):
         message["To"] = receiver_email
         message["Subject"] = "Please verify your account"
 
-       # Body of the email
+        # Body of the email
         body = f"""To verify your account, please <a href="http://127.0.0.1/verify/{user_verification_key}">click here</a>"""
         message.attach(MIMEText(body, "html"))
 
@@ -204,8 +201,3 @@ def send_verify_email(to_email, user_verification_key):
         print("Email sent successfully!")
 
         return "email sent"
-
-    except Exception as ex:
-        raise_custom_exception("cannot send email", 500)
-    finally:
-        pass
