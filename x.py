@@ -203,7 +203,7 @@ def send_verify_email(to_email, user_verification_key):
         return "email sent"
 
 ##############################
-def send_email_block(user_pk):
+def send_email_user_block(user_pk):
         sender_email = "webdevkea2024@gmail.com"
         password = "cjsp pvow yfmq lyio"
 
@@ -217,6 +217,83 @@ def send_email_block(user_pk):
         message["Subject"] = "User Blocked"
 
         body = f"""{user_pk} was blocked"""
+        message.attach(MIMEText(body, "html"))
+
+        # Connect to Gmail's SMTP server and send the email
+        with smtplib.SMTP("smtp.gmail.com", 587) as server:
+            server.starttls()  # Upgrade the connection to secure
+            server.login(sender_email, password)
+            server.sendmail(sender_email, receiver_email, message.as_string())
+        print("Email sent successfully!")
+
+        return "email sent"
+
+##############################
+def send_email_user_unblock(user_pk):
+        sender_email = "webdevkea2024@gmail.com"
+        password = "cjsp pvow yfmq lyio"
+
+        # Receiver email address
+        receiver_email = "webdevkea2024@gmail.com"
+
+        # Create email message
+        message = MIMEMultipart()
+        message ["From"] = "HungerHub"
+        message["To"] = receiver_email
+        message["Subject"] = "User Unblocked"
+        body = f"""{user_pk} was unblocked"""
+        message.attach(MIMEText(body, "html"))
+
+        # Connect to Gmail's SMTP server and send the email
+        with smtplib.SMTP("smtp.gmail.com", 587) as server:
+            server.starttls()  # Upgrade the connection to secure
+            server.login(sender_email, password)
+            server.sendmail(sender_email, receiver_email, message.as_string())
+        print("Email sent successfully!")
+
+        return "email sent"
+
+##############################
+def send_email_item_block(item_pk):
+        sender_email = "webdevkea2024@gmail.com"
+        password = "cjsp pvow yfmq lyio"
+
+        # Receiver email address
+        receiver_email = "webdevkea2024@gmail.com"
+
+        # Create email message
+        message = MIMEMultipart()
+        message ["From"] = "HungerHub"
+        message["To"] = receiver_email
+        message["Subject"] = "Item Blocked"
+
+        body = f"""{item_pk} was blocked"""
+        message.attach(MIMEText(body, "html"))
+
+        # Connect to Gmail's SMTP server and send the email
+        with smtplib.SMTP("smtp.gmail.com", 587) as server:
+            server.starttls()  # Upgrade the connection to secure
+            server.login(sender_email, password)
+            server.sendmail(sender_email, receiver_email, message.as_string())
+        print("Email sent successfully!")
+
+        return "email sent"
+
+##############################
+def send_email_item_unblock(item_pk):
+        sender_email = "webdevkea2024@gmail.com"
+        password = "cjsp pvow yfmq lyio"
+
+        # Receiver email address
+        receiver_email = "webdevkea2024@gmail.com"
+
+        # Create email message
+        message = MIMEMultipart()
+        message ["From"] = "HungerHub"
+        message["To"] = receiver_email
+        message["Subject"] = "Item Unblocked"
+
+        body = f"""{item_pk} was unblocked"""
         message.attach(MIMEText(body, "html"))
 
         # Connect to Gmail's SMTP server and send the email

@@ -626,7 +626,7 @@ def user_block(user_pk):
         db.commit()
 
 
-        x.send_email_block(user_pk)
+        x.send_email_user_block(user_pk)
 
         # Respond with the new Unblock button
         btn_unblock = render_template("___btn_unblock_user.html", user={"user_pk": user_pk})
@@ -672,6 +672,8 @@ def user_unblock(user_pk):
         if cursor.rowcount != 1:
             return "<template>Could not unblock user</template>", 400
         db.commit()
+
+        x.send_email_user_unblock(user_pk)
 
         # Respond with the new Block button
         btn_block = render_template("___btn_block_user.html", user={"user_pk": user_pk})
@@ -740,6 +742,7 @@ def item_update():
             return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 401
                     
         db.commit()
+
         toast = render_template("___toast.html", message="Item updated")
         return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 200
     
@@ -782,6 +785,8 @@ def item_block(item_pk):
             toast = render_template("___toast.html", message="Cannot block item")
             return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 400            
         db.commit()    
+
+        x.send_email_item_block(item_pk)
 
         # Respond with the new Unblock button
         btn_unblock = render_template("___btn_unblock_user.html", item={"item_pk": item_pk})
@@ -827,6 +832,8 @@ def item_unblock(item_pk):
             toast = render_template("___toast.html", message="Cannot unblock item")
             return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 400              
         db.commit()
+
+        x.send_email_item_unblock(item_pk)
 
         # Respond with the new Block button
         btn_block = render_template("___btn_block_user.html", item={"item_pk": item_pk})
