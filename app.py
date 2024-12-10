@@ -484,12 +484,14 @@ def logout():
 def create_item():
     try:
         # Check if the user is logged in
+        
         if not session.get("user"):
             toast = render_template("___toast.html", message="Please login to create an item")
             return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 401
-            
+        
         # Extract the user ID from the session
         user_pk = session.get("user").get("user_pk")
+        
 
         # Validate inputs for the item
         item_title = x.validate_item_title()
@@ -501,9 +503,10 @@ def create_item():
         item_deleted_at = 0
         item_blocked_at = 0
         item_updated_at = 0
-
+    
         # Save the uploaded image to the designated folder
         file.save(os.path.join(x.UPLOAD_ITEM_FOLDER, item_image))
+        
 
         # Database connection and insertion
         db, cursor = x.db()
