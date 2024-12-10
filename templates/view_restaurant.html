@@ -21,7 +21,6 @@
                                 <td>{{ item["item_price"] }} Dkk</td>
                                 <td>
                                     <a class="edit" href="{{ url_for('view_restaurant_edit', item_pk=item['item_pk']) }}">Edit</a>
-                                    <button class="delete_small" mix-delete="/items/{{item['item_pk']}}">Delete</button>
                                 </td>
                             </tr>
                         {% endfor %}
