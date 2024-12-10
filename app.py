@@ -609,6 +609,7 @@ def user_update():
 @app.put("/users/block/<user_pk>")
 @x.no_cache
 def user_block(user_pk):
+    
     try:
         # Check admin role
         if not "admin" in session.get("user").get("roles"):
@@ -623,6 +624,9 @@ def user_block(user_pk):
         if cursor.rowcount != 1:
             return "<template>Could not block user</template>", 400
         db.commit()
+
+
+        x.send_email_block(user_pk)
 
         # Respond with the new Unblock button
         btn_unblock = render_template("___btn_unblock_user.html", user={"user_pk": user_pk})
@@ -676,6 +680,8 @@ def user_unblock(user_pk):
             <template mix-target='#block-unblock-btn-{user_pk}' mix-replace>{btn_block}</template>
             <template mix-target="#toast" mix-bottom>{toast}</template>
         """
+    
+
     
     except Exception as ex:
         # Handle exceptions and roll back if needed
