@@ -184,7 +184,7 @@ def send_verify_email(to_email, user_verification_key):
         password = "cjsp pvow yfmq lyio"
 
         # Receiver email address
-        receiver_email = "magnusdanielsen1@gmail.com"
+        receiver_email = "webdevkea2024@gmail.com"
 
         # Create email message
         message = MIMEMultipart()
