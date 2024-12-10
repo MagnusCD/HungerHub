@@ -937,6 +937,48 @@ def item_delete(item_pk):
         if "cursor" in locals(): cursor.close()
         if "db" in locals(): db.close()
 
+##############################
+##############################
+##############################
+
+def _________BRIDGE_________(): pass
+
+##############################
+##############################
+##############################
+
+
+##############################
+# Verify user
+##############################
+@app.get("/verify/<verification_key>")
+@x.no_cache
+def verify_user(verification_key):
+    try:
+        verification_key = x.validate_uuid4(verification_key)
+        user_verified_at = int(time.time())
+
+        db, cursor = x.db()
+        q = """ UPDATE users
+                SET user_verified_at = %s
+                WHERE user_verification_key = %s"""
+        cursor.execute(q, (user_verified_at, verification_key))
+        if cursor.rowcount != 1: x.raise_custom_exception("cannot verify account", 400)
+        db.commit()
+        return redirect(url_for("view_login", message="User verified, please login"))
+
+    except Exception as ex:
+        ic(ex)
+        if "db" in locals(): db.rollback()
+        if isinstance(ex, x.CustomException): return ex.message, ex.code
+        if isinstance(ex, x.mysql.connector.Error):
+            ic(ex)
+            return "Database under maintenance", 500
+        return "System under maintenance", 500
+    finally:
+        if "cursor" in locals(): cursor.close()
+        if "db" in locals(): db.close()
+
 ##########################
 if __name__ == "__main__":
     app.run(debug=True)

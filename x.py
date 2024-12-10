@@ -198,6 +198,6 @@ def send_verify_email(to_email, user_verification_key):
             server.starttls()  # Upgrade the connection to secure
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
-        print("Email sent successfully!")
+        ic("Email sent successfully!")
 
         return "email sent"
