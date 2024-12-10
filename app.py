@@ -370,7 +370,8 @@ def login():
                 ON user_pk = user_role_user_fk
                 JOIN roles
                 ON role_pk = user_role_role_fk
-                WHERE user_email = %s"""
+                WHERE user_email = %s
+                AND user_verified_at > 0"""
         cursor.execute(q, (user_email,))
         rows = cursor.fetchall()
 
@@ -447,6 +448,7 @@ def create_user():
         q_roles = 'INSERT INTO users_roles (user_role_user_fk, user_role_role_fk) VALUES (%s, %s)'
         cursor.execute(q_roles, (user_pk, role_fk))
         db.commit()
+        x.send_verify_email(user_email, user_verification_key)
         return f"""<template mix-redirect="/login"></template>""", 201
     
     except Exception as ex:

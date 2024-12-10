@@ -170,3 +170,42 @@ def validate_item_price():
     item_price_str = request.form.get("item_price", "").strip()
     if not re.match(ITEM_PRICE_REGEX, item_price_str): raise_custom_exception(error, 400)
     return Decimal(item_price_str)
+
+
+
+
+##############################
+def send_verify_email(to_email, user_verification_key):
+    try:
+        # Email and password of the senders Gmail account
+        # Enable (turn on) 2 step verification/factor in the google account manager
+        # Visit: https://myaccount.google.com/apppasswords
+        sender_email = "webdevkea2024@gmail.com"
+        password = "cjsp pvow yfmq lyio"
+
+        # Receiver email address
+        receiver_email = "magnusdanielsen1@gmail.com"
+
+        # Create email message
+        message = MIMEMultipart()
+        message ["From"] = "HungerHub"
+        message["To"] = receiver_email
+        message["Subject"] = "Please verify your account"
+
+       # Body of the email
+        body = f"""To verify your account, please <a href="http://127.0.0.1/verify/{user_verification_key}">click here</a>"""
+        message.attach(MIMEText(body, "html"))
+
+        # Connect to Gmail's SMTP server and send the email
+        with smtplib.SMTP("smtp.gmail.com", 587) as server:
+            server.starttls()  # Upgrade the connection to secure
+            server.login(sender_email, password)
+            server.sendmail(sender_email, receiver_email, message.as_string())
+        print("Email sent successfully!")
+
+        return "email sent"
+
+    except Exception as ex:
+        raise_custom_exception("cannot send email", 500)
+    finally:
+        pass
