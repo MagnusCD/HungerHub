@@ -116,11 +116,12 @@ def view_customer():
 ##############################
 # Customer single view page
 ##############################
-@app.get("/customer/<user_pk>")
+@app.get("/customer-single/<user_pk>")
 @x.no_cache
-def view_customer_singleview(user_pk):
+def view_customer_single(user_pk):
     try:
         db, cursor = x.db()  # Connect to the database
+        user = session.get("user")  # Ensure user is available
 
         # Fetch restaurant info
         q_restaurant = """
@@ -130,11 +131,11 @@ def view_customer_singleview(user_pk):
                 u.user_verified_at AS restaurant_verified_at,
                 u.user_created_at AS restaurant_created_at
             FROM users u
-            WHERE u.user_pk = %s
+            WHERE u.user_pk = %s AND u.user_deleted_at = 0
         """
         cursor.execute(q_restaurant, (user_pk,))
-        restaurant = cursor.fetchone()  # Fetch restaurant details
-        ic(user_pk)         
+        restaurant = cursor.fetchone()
+
         if not restaurant:
             return "Restaurant not found", 404
 
@@ -149,23 +150,23 @@ def view_customer_singleview(user_pk):
             WHERE i.item_deleted_at = 0 AND i.item_user_fk = %s
         """
         cursor.execute(q_items, (user_pk,))
-        items = cursor.fetchall()  # Fetch items
-
-        ic(restaurant, items)  # Debugging output
+        items = cursor.fetchall()
 
         return render_template(
-            "view_customer_singleview.html", 
-            restaurant=restaurant, 
-            items=items
+            "view_customer_single.html",
+            restaurant=restaurant,
+            items=items,
+            user=user
         )
 
     except Exception as ex:
-        ic(ex)
-        return "Error loading restaurant details", 500
+        return f"Error loading restaurant details: {ex}", 500
 
     finally:
         if "cursor" in locals(): cursor.close()
         if "db" in locals(): db.close()
+
+
 
 
 

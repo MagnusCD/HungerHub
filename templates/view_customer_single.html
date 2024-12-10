@@ -2,19 +2,27 @@
 
         <main>
             <section class="customer_single">
-                <h1>Restaurant name</h1>
-                <ul>
-                    <li>
-                        <p>Item name</p>
-                        <p>Item price</p>
-                        <button class="buy">Buy</button>
-                    </li>
-
-                    <li>Static item 2</li>
-                    <li>Static item 3</li>
-                    <li>Static item 4</li>
-                    <li>Static item 5</li>
-                </ul>
+                <h1>{{ restaurant.restaurant_name }}</h1>
+                <!-- Restaurant Items -->
+                <section class="customer_single_items">
+                    <h2>Menu</h2>
+                    <ul>
+                        {% for item in items %}
+                            <li>
+                                <div>
+                                    <h3>{{ item.item_title }}</h3>
+                                    <p>{{ item.item_description }}</p>
+                                    <p>Price: ${{ item.item_price }}</p>
+                                </div>
+                                {% if item.item_image %}
+                                    <img src="{{ url_for('static', filename='images/' + item.item_image) }}" alt="{{ item.item_title }}">
+                                {% endif %}
+                            </li>
+                        {% else %}
+                            <li>No items available for this restaurant.</li>
+                        {% endfor %}
+                    </ul>
+                </section>
             </section>
         </main>
 

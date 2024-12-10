@@ -18,7 +18,7 @@
     font-family: var(--font-body);
 }
 
-h1, h2, .logo, .cta, .delete, .blocker, .edit, .delete_small {
+h1, h2, h3, .logo, .cta, .delete, .blocker, .edit, .delete_small {
     font-family: var(--font-header);
 }
 

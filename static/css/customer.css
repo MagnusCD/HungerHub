@@ -99,35 +99,28 @@ a.card {
 
 /* Customer singleview */
 
-.customer_single {
+section.customer_single {
     display: grid;
     grid-template-columns: 1fr;
+    margin: 1rem;
 
-    > ul {
-        margin-top: 1rem;
+    > section.customer_single_items > ul {
         display: flex;
         flex-direction: row;
-        gap: 1.5rem;
+        gap: 1rem;
+        padding-left: 0;
         flex-wrap: wrap;
+    }
+
+    > section.customer_single_items > ul > li {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        flex-direction: column;
+        padding: 1rem;
+        border: solid 1px var(--primary-col);
     }
 }
 
-.customer_single > ul > li {
-    border-radius: 10px;
-    padding: 5rem 7rem;
-    list-style-type: none;
-    background-color: var(--tertiary-col);
-    display: grid;
-}
-
-.buy {
-    color: var(--secondary-col);
-    border: none;
-    text-align: center;
-    cursor: pointer;
-    border-radius: var(--cta-border-radius);
-    padding: 0.25rem;
-}
 
 @media (min-width: 1050px) {
     .buy {

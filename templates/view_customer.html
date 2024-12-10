@@ -24,7 +24,7 @@
                         {% for restaurant in restaurants %}
                         <li>
                             <div>
-                                <a class="card" href="{{ url_for('view_customer_singleview', user_pk=restaurant.user_pk) }}">
+                                <a class="card" href="{{ url_for('view_customer_single', user_pk=restaurant.user_pk) }}">
                                     {{ restaurant.restaurant_name }}
                                 </a>
                             </div>
@@ -35,9 +35,6 @@
                         <button class="cta center">More</button>
                     </div>
                 </section>
-                
-                
-                
             </section>
         </main>
 
