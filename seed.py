@@ -184,7 +184,7 @@ try:
     user_pk = str(uuid.uuid4())
     user = {
         "user_pk" : user_pk,
-        "user_name" : "John",
+        "user_name" : "Seafood",
         "user_last_name" : "Restaurant",
         "user_email" : "restaurant@fulldemo.com",
         "user_password" : generate_password_hash("password"),
@@ -202,36 +202,6 @@ try:
         "{x.RESTAURANT_ROLE_PK}")
         """
     cursor.execute(q)
-
-    
-    ####################################
-    ######   Create a user with 2 roles
-    ####################################
-    user_pk = str(uuid.uuid4())
-    user = {
-        "user_pk": user_pk,
-        "user_name": "John",
-        "user_last_name": "twouserroles",
-        "user_email": "userroles@fulldemo.com",
-        "user_password": generate_password_hash("password"),
-        "user_created_at": int(time.time()),
-        "user_deleted_at": 0,
-        "user_blocked_at": 0,
-        "user_updated_at": 0,
-        "user_verified_at": int(time.time()),
-        "user_verification_key": str(uuid.uuid4())
-    }
-    # Insert user into users table
-    insert_user(user)
-    # Assign two roles to the user
-    cursor.execute("""
-        INSERT INTO users_roles (user_role_user_fk, user_role_role_fk)
-        VALUES (%s, %s)
-    """, (user_pk, x.CUSTOMER_ROLE_PK))
-    cursor.execute("""
-        INSERT INTO users_roles (user_role_user_fk, user_role_role_fk)
-        VALUES (%s, %s)
-    """, (user_pk, x.PARTNER_ROLE_PK))
 
     ###############################
     ######   Create 20 customers
