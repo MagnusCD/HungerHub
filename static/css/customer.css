@@ -116,6 +116,7 @@ section.customer_single {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
+        justify-content: space-between;
         gap: 0.8rem;
 
         border-radius: var(--button-border-radius);
@@ -123,8 +124,8 @@ section.customer_single {
 
         > div {
             padding: 1rem;
-            max-width: 14ch;
-            line-break: strict;
+            /* max-width: 14ch;
+            line-break: strict; */
         }
     }
 
