@@ -99,14 +99,32 @@ a.card {
 
 /* Customer singleview */
 
+@media (max-width: 582px) {
+
+    section.customer_single section.customer_single_items > ul{
+    grid-template-columns: repeat(1, minmax(0, 1fr)); 
+    }
+}
+
+
+@media (min-width: 583px) {
+
+    section.customer_single section.customer_single_items > ul{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+
 section.customer_single {
     display: grid;
     grid-template-columns: 1fr;
     margin: 1rem;
 
     > section.customer_single_items > ul {
-        display: flex;
-        flex-direction: row;
+        /* display: flex;
+        flex-direction: row; */
+        
+        display: grid;
         gap: 1rem;
         padding-left: 0;
         flex-wrap: wrap;

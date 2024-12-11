@@ -1,19 +1,22 @@
-main.profile {
+main.profile_main {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 2rem;
+    
+    > section {
+        margin: 2rem;
+    }
     
 }
 
 @media (max-width: 700px) {
-    main.profile {
+    main.profile_main {
         display: grid;
         grid-template-columns: 2fr 1fr;
     }
 }
 
 @media (max-width: 500px) {
-    main.profile {
+    main.profile_main {
         display: grid;
         grid-template-columns: 1fr;
     }

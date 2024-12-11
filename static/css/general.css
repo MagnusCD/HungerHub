@@ -10,6 +10,11 @@
     margin: 0;
 }
 
+.customer_single_main, .customer, .profile_main, .admin, .restaurant {
+    max-width: 1200px;
+    margin: 0px auto;
+}
+
 #toast {
     background-color: var(--secondary-col); /* Approximate +5 tint for red */
     color: black; /* Equivalent to text-c-white */
@@ -101,6 +106,10 @@ input:focus {
 #map {
     height: 100vh; 
     width: 100%;
+}
+
+.single_h1 {
+    margin-bottom: 1rem;
 }
 
 /* Styles form used for profile (for all) */
