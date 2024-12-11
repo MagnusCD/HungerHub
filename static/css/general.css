@@ -127,6 +127,8 @@ form.profile {
     }
 }
 
+/* Styles for login and signup */
+
 main.login, main.signup, main.index {
     background-color: var(--primary-col);
 }
@@ -140,6 +142,13 @@ main.login, main.signup {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 650px) {
+    main.login, main.signup {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }
 
 #frm_user_signup label, #frm_user_login label {
