@@ -47,8 +47,6 @@ def view_profile():
 def view_login():
     ic(session)
     if session.get("user"):
-        if len(session.get("user").get("roles")) > 1:
-            return redirect(url_for("view_choose_role"))
         if "admin" in session.get("user").get("roles"):
             return redirect(url_for("view_admin"))
         if "customer" in session.get("user").get("roles"):
@@ -67,8 +65,6 @@ def view_login():
 def view_signup():
     ic(session)
     if session.get("user"):
-        if len(session.get("user").get("roles")) > 1:
-            return redirect(url_for("view_choose_role"))
         if "admin" in session.get("user").get("roles"):
             return redirect(url_for("view_admin"))
         if "customer" in session.get("user").get("roles"):
@@ -85,13 +81,10 @@ def view_signup():
 @app.get("/customer")
 @x.no_cache
 def view_customer():
-    if not session.get("user", ""):
-        return redirect(url_for("view_login"))
-    user = session.get("user")
-    if len(user.get("roles", "")) > 1:
-        return redirect(url_for("view_choose_role"))
-
     try:
+        if not session.get("user", ""):
+            return redirect(url_for("view_login"))
+        user = session.get("user")
         db, cursor = x.db()  # Connect to the database
 
         # Fetch all restaurants with the restaurant role
