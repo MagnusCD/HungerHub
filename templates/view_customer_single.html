@@ -9,14 +9,15 @@
                     <ul>
                         {% for item in items %}
                             <li>
+                                {% if item.item_image %}
+                                    <img class="dish" src="{{ url_for('static', filename='dishes/' + item.item_image) }}" alt="{{ item.item_title }}">
+                                {% endif %}
                                 <div>
                                     <h3>{{ item.item_title }}</h3>
                                     <p>{{ item.item_description }}</p>
                                     <p>Price: ${{ item.item_price }}</p>
+                                    <button class="buy">Buy</button>
                                 </div>
-                                {% if item.item_image %}
-                                    <img src="{{ url_for('static', filename='dishes/' + item.item_image) }}" alt="{{ item.item_title }}">
-                                {% endif %}
                             </li>
                         {% else %}
                             <li>No items available for this restaurant.</li>

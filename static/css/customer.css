@@ -113,17 +113,32 @@ section.customer_single {
     }
 
     > section.customer_single_items > ul > li {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
         flex-direction: column;
-        padding: 1rem;
-        border: solid 1px var(--primary-col);
+        flex-wrap: wrap;
+        gap: 0.8rem;
+
+        border-radius: var(--button-border-radius);
+        background-color: rgb(232, 232, 232);
+
+        > div {
+            padding: 1rem;
+        }
+    }
+
+    img.dish {
+        height: 7rem;
+        border-radius: 0.2rem 0.2rem 0 0;
     }
 }
 
-
-@media (min-width: 1050px) {
-    .buy {
-        font-size: var(--font-body-rem-desk-mid);
-    }
+.buy {
+    font-size: var(--font-body-rem-desk-mid);
+    color: var(--secondary-col);
+    background-color: var(--cta-col);
+    font-family: var(--font-header);
+    border: none;
+    border-radius: var(--button-border-radius);
+    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    cursor: pointer;
 }
