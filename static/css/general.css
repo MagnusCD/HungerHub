@@ -123,6 +123,8 @@ form.profile {
     }
 }
 
+/* Styles for login and signup */
+
 main.login, main.signup, main.index {
     background-color: var(--primary-col);
 }
@@ -138,12 +140,55 @@ main.login, main.signup {
     align-items: center;
 }
 
+@media (max-width: 650px) {
+    main.login, main.signup {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
 #frm_user_signup label, #frm_user_login label {
     margin-bottom: 0;
 }
 
 #frm_user_signup button {
     margin-top: 0.8rem;
+}
+
+/* Styles for burger on mobile */
+.burger_menu {
+    display: none;
+}
+
+/* Mobile: Skjul top_nav, vis burgermenu */
+@media (max-width: 768px) {
+    .top_nav {
+        display: none;
+    }
+    button.burger_icon {
+        background-color: transparent;
+        border: none;
+        color: var(--secondary-col);
+    }
+    .burger_menu {
+        display: block;
+        position: relative;
+    }
+    .mobile_nav {
+        display: none;
+        position: absolute;
+        background: var(--secondary-col);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        right: 0;
+        top: 100%;
+        padding: 20px; /* Add padding for inner spacing */
+        border-radius: 8px; /* Slightly rounded corners for a modern look */
+        z-index: 1000; /* Ensure it stays above other content */
+        width: 200px; /* Set a width for the menu */
+    }
+    .burger_menu.active .mobile_nav {
+        display: block;
+    }
 }
 
 @media (min-width: 1050px) {

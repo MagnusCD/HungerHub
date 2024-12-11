@@ -2,11 +2,17 @@
 @import 'general.css';
 
 
+main.login, main.signup {
+    background-color: var(--primary-col);
+    height: 100vh;
+}
+
 .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 5rem;
+
 }
 
 form {
@@ -19,7 +25,8 @@ form {
     padding: 2rem;
     border-radius: var(--form-border-radius);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    max-width: 18.75rem;
+    min-width: 6.25rem;
 }
 
 .signin_box h1 {
@@ -51,4 +58,23 @@ form {
     text-decoration: none;
     font-weight: bold;
     text-align: left;
+}
+
+@media (max-width: 1050px) { 
+    .signin_box {
+        min-width: 20.25rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0;
+    }
+
+    .signin_box {
+        min-width: 6.25rem;
+    }
 }

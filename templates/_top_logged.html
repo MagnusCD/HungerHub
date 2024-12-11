@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='mixhtml.css') }}">
     <link rel="stylesheet" href="../static/css/general.css">
     <script src="../static/tab.js" defer></script>
+    <script src="../static/burger.js" defer></script>
     <title>Hunger Hub</title>
 </head>
 <body>
@@ -23,5 +24,16 @@
                 <a class="cta" href="{{url_for('view_profile')}}">Profile</a>
                 <button class="cta">Logout</button>
             </nav>
+
+                        <!-- Burger Menu for Mobile -->
+            <div class="burger_menu">
+                <button  class="burger_icon" type="button" aria-label="Toggle menu">
+                    ☰
+                </button>
+                <div class="mobile_nav">
+                    <a class="cta" href="{{url_for('view_profile')}}">Profile</a>
+                    <button class="cta">Logout</button>
+                </div>
+            </div>
         </header>
     </form>
