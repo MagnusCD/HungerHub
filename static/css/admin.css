@@ -1,5 +1,37 @@
 /* admin tabs */
 
+@media (max-width: 689px) {
+
+    thead {
+        display: none;
+    }
+
+    tbody.admin_list_body{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    tbody.admin_list_body tr {
+        display: flex;
+        flex-direction: column; /* Ensure row direction for smaller screens */
+        flex-wrap: wrap;
+        align-content: flex-start;
+        text-align: left;
+        background-color: #ddd;
+        gap: 0.3rem;
+        padding: 0.5rem;
+        border-radius: 8px;
+    }
+
+    tbody.admin_list_body td {
+        flex: 1; /* Distribute space evenly across cells */
+        display: flex;
+        align-items: center;
+    }
+}
+
+
 .tab_container {
     display: flex;
     flex-direction: column;
@@ -28,7 +60,7 @@
 }
 
 .tab_content.active {
-    display: block;
+    display: grid;
 }
 
 div.tab_header:has(h2) {
@@ -38,6 +70,8 @@ div.tab_header:has(h2) {
 }
 
 /* admin table */
+
+@media (min-width: 690px) {
 
 table.admin_list {
     width: 100%; /* Table spans the full width of the container */
@@ -59,7 +93,6 @@ tbody.admin_list_body tr {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr; /* Make each row behave like a block element */
     margin-bottom: 10px; /* Add space between rows */
-    border: 1px solid #ddd; /* Optional: Add a border around rows */
     border-radius: 8px; /* Optional: Round the edges for a card-like effect */
     padding: 0.6rem; /* Add padding inside each row */
     background-color: var(--tertiary-col); /* Optional: Background color for rows */
@@ -84,4 +117,6 @@ tbody.admin_list_body td::before {
     content: attr(data-label); /* Use a custom label before the data */
     display: inline-block; /* Align the label inline */
     margin-right: 10px; /* Add space between label and value */
+}
+
 }
