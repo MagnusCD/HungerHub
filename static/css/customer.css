@@ -162,10 +162,6 @@ section.customer_single {
     border-radius: var(--button-border-radius);
     padding: 0.3rem 0.5rem 0.3rem 0.5rem;
     cursor: pointer;
+    margin-top: 0.5rem;
 }
 
-@media (min-width: 1011px) {
-    .buy {
-        margin-top: 0.5rem;
-    }
-}
