@@ -119,7 +119,7 @@ section.customer_single {
         gap: 0.8rem;
 
         border-radius: var(--button-border-radius);
-        background-color: rgb(232, 232, 232);
+        background-color: rgb(244, 244, 244);
 
         > div {
             padding: 1rem;
@@ -141,4 +141,10 @@ section.customer_single {
     border-radius: var(--button-border-radius);
     padding: 0.3rem 0.5rem 0.3rem 0.5rem;
     cursor: pointer;
+}
+
+@media (min-width: 1011px) {
+    .buy {
+        margin-top: 0.5rem;
+    }
 }
