@@ -15,7 +15,7 @@
                                     <p>Price: ${{ item.item_price }}</p>
                                 </div>
                                 {% if item.item_image %}
-                                    <img src="{{ url_for('static', filename='images/' + item.item_image) }}" alt="{{ item.item_title }}">
+                                    <img src="{{ url_for('static', filename='dishes/' + item.item_image) }}" alt="{{ item.item_title }}">
                                 {% endif %}
                             </li>
                         {% else %}
