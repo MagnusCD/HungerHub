@@ -1,5 +1,38 @@
  /* Restaurant homepage */
 
+ @media (max-width: 689px) {
+
+    thead {
+        display: none;
+    }
+
+    tbody.restaurant_list_body{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    tbody.restaurant_list_body tr {
+        display: flex;
+        flex-direction: column; /* Ensure row direction for smaller screens */
+        flex-wrap: wrap;
+        align-content: flex-start;
+        text-align: left;
+        gap: 0.3rem;
+        padding: 0.5rem;
+    }
+
+    tbody.restaurant_list_body tr:first-child {
+        margin-top: 1rem;
+    }
+
+    tbody.restaurant_list_body td {
+        flex: 1; /* Distribute space evenly across cells */
+        display: flex;
+        align-items: center;
+    }
+}
+
 section.restaurant_list {
     margin: 2rem;
     display: grid;
@@ -9,6 +42,11 @@ section.restaurant_list {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+tbody.restaurant_list_body tr {
+    background-color: var(--tertiary-col); /* Optional: Background color for rows */
+    border-radius: 8px; /* Optional: Round the edges for a card-like effect */
 }
 
 table.restaurant_list {
@@ -23,13 +61,12 @@ thead.restaurant_list_head tr {
     padding: 1.1rem;
 }
 
+@media (min-width: 690px) {
 
 tbody.restaurant_list_body tr {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; /* Make each row behave like a block element */
     margin-bottom: 10px; /* Add space between rows */
-    border: 1px solid #ddd; /* Optional: Add a border around rows */
-    border-radius: 8px; /* Optional: Round the edges for a card-like effect */
     padding: 0.6rem; /* Add padding inside each row */
     background-color: var(--tertiary-col); /* Optional: Background color for rows */
 
@@ -42,6 +79,7 @@ tbody.restaurant_list_body tr {
     > td:last-child {
         text-align: end;
     }
+}
 }
 
 tbody.restaurant_list_body tr:hover {
