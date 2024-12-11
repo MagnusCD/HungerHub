@@ -364,9 +364,7 @@ def login():
         session["user"] = user
 
         # redirect based on roles
-        if len(roles) == 1:
-            return f"""<template mix-redirect="/{roles[0]}"></template>"""
-        return f"""<template mix-redirect="/choose-role"></template>"""
+        return f"""<template mix-redirect="/{roles[0]}"></template>"""
 
     except Exception as ex:
         ic(ex)
