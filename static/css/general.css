@@ -125,12 +125,11 @@ form.profile {
 
 main.login, main.signup, main.index {
     background-color: var(--primary-col);
-    height: 100vh;
 }
 
 main.login, main.signup {
     margin: 0;
-    padding: 0;
+    padding: 2rem;
 }
 
 main.login, main.signup {
