@@ -2,11 +2,17 @@
 @import 'general.css';
 
 
+main.login, main.signup {
+    background-color: var(--primary-col);
+    height: 100vh;
+}
+
 .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 5rem;
+
 }
 
 form {
