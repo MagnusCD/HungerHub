@@ -11,18 +11,17 @@
                     <form class="search" action="/search" method="get">
                         <div>
                             <label class="query" for="query"></label>
-                            <input type="text" name="query" id="query" placeholder="Search">
+                            <input type="text" name="query" id="query" placeholder="Search for restaurants">
                         </div>
-                        <!-- midlertidig emoji -- skifter ud med billede senere -->
                         <button type="submit">🔍</button>
                     </form>
                 </div>
 
                 <section class="item_list">
-                    <ul class="item_list">
+                    <ul class="item_list" id="restaurant-item">
                         <!-- Loop through restaurants -->
                         {% for restaurant in restaurants %}
-                        <li>
+                        <li class="restaurant-item">
                             <div>
                                 <a class="card" href="{{ url_for('view_customer_single', user_pk=restaurant.user_pk) }}">
                                     {{ restaurant.restaurant_name }}
