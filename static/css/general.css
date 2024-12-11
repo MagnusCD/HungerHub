@@ -10,6 +10,10 @@
     margin: 0;
 }
 
+body {
+    background-color: var(--primary-col);
+}
+
 #toast {
     background-color: var(--secondary-col); /* Approximate +5 tint for red */
     color: black; /* Equivalent to text-c-white */
