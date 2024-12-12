@@ -462,17 +462,18 @@ def create_item():
         item_title = x.validate_item_title()
         item_description = x.validate_item_description()
         item_price = x.validate_item_price()
-        file, item_image = x.validate_item_image()  # Validate and process image file
+        images = x.validate_item_images()  # validate multiple images
+
         item_pk = str(uuid.uuid4())  # Generate a unique identifier for the item
         item_created_at = int(time.time())
         item_deleted_at = 0
         item_blocked_at = 0
         item_updated_at = 0
     
-        # Save the uploaded image to the designated folder
-        file.save(os.path.join(x.UPLOAD_ITEM_FOLDER, item_image))
-        
-        # Database connection and insertion
+        # Save the first image to the 'items' table
+        main_image_file, main_image_name = images[0]
+        main_image_file.save(os.path.join(x.UPLOAD_ITEM_FOLDER, main_image_name))
+
         db, cursor = x.db()
 
         # Insert the new item into the database
@@ -480,8 +481,19 @@ def create_item():
             INSERT INTO items (item_pk, item_user_fk, item_title, item_description, item_price, item_image, item_created_at, item_deleted_at, item_blocked_at, item_updated_at)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """
-        cursor.execute(q, (item_pk, user_pk, item_title, item_description, item_price, item_image, item_created_at, item_deleted_at, item_blocked_at, item_updated_at))
+        cursor.execute(q, (item_pk, user_pk, item_title, item_description, item_price, main_image_name, item_created_at, item_deleted_at, item_blocked_at, item_updated_at))
 
+        # Save additional images to the 'item_images' table
+        for file, filename in images[1:]:
+            file.save(os.path.join(x.UPLOAD_ITEM_FOLDER, filename))
+            q = """
+                INSERT INTO item_images (image_pk, item_fk, image_file)
+                VALUES (%s, %s, %s)
+            """
+            cursor.execute(q, (str(uuid.uuid4()), item_pk, filename))
+        
+        
+        ic(images) # log validated images list
         # Commit the transaction to save the item
         db.commit()
 
