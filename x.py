@@ -311,6 +311,34 @@ def send_email_item_unblock(item_pk):
 
         return "email sent"
 
+##############################
+
+def send_reset_password_email(to_email, reset_token):
+    sender_email = "webdevkea2024@gmail.com"
+    password = "cjsp pvow yfmq lyio"
+
+    # Receiver email address
+    receiver_email = "webdevkea2024@gmail.com"
+
+    # Create email message
+    message = MIMEMultipart()
+    message["From"] = "HungerHub"
+    message["To"] = receiver_email
+    message["Subject"] = "Password Reset Request"
+
+    body = f"""To reset your password, please <a href="http://127.0.0.1/reset-password/{reset_token}">click here</a>
+               This link will expire in 1 hour."""
+    message.attach(MIMEText(body, "html"))
+
+    # Connect to Gmail's SMTP server and send the email
+    with smtplib.SMTP("smtp.gmail.com", 587) as server:
+        server.starttls()
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, message.as_string())
+    ic("Password reset email sent successfully!")
+
+    return "email sent"
+
 
 ##############################
 ##############################

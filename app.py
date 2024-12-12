@@ -308,6 +308,13 @@ def view_restaurant_edit(item_pk):
         if "cursor" in locals(): cursor.close()
         if "db" in locals(): db.close()
 
+
+@app.get("/forgot-password")
+@x.no_cache
+def view_forgot_password():
+    return render_template("view_forgot_password.html", x=x)
+
+
 ###################################
 ###################################
 def _________POST_________(): pass
@@ -382,6 +389,129 @@ def login():
         if "cursor" in locals(): cursor.close()
         if "db" in locals(): db.close()
 
+
+@app.post("/forgot-password")
+@x.no_cache
+def forgot_password():
+    try:
+        user_email = x.validate_user_email()
+        
+        # Generate reset token
+        reset_token = str(uuid.uuid4())
+        reset_token_expires = int(time.time()) + 3600  # Token expires in 1 hour
+        
+        db, cursor = x.db()
+        
+        # Check if user exists and is verified
+        q = "SELECT user_pk FROM users WHERE user_email = %s AND user_verified_at > 0 AND user_deleted_at = 0"
+        cursor.execute(q, (user_email,))
+        user = cursor.fetchone()
+        
+        if not user:
+            toast = render_template("___toast.html", message="No user registered with this e-mail was found")
+            return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 200
+
+        # Update user with reset token
+        q = """UPDATE users 
+               SET user_reset_token = %s, user_reset_token_expires = %s 
+               WHERE user_email = %s"""
+        cursor.execute(q, (reset_token, reset_token_expires, user_email))
+        
+        db.commit()
+        
+        # Send reset email
+        x.send_reset_password_email(user_email, reset_token)
+        
+        toast = render_template("___toast.html", message="If an account exists, a reset link will be sent")
+        return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 200
+
+    except Exception as ex:
+        ic(ex)
+        if "db" in locals(): db.rollback()
+        if isinstance(ex, x.CustomException):
+            toast = render_template("___toast.html", message=ex.message)
+            return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", ex.code
+        return "<template>System under maintenance</template>", 500
+    finally:
+        if "cursor" in locals(): cursor.close()
+        if "db" in locals(): db.close()
+
+@app.get("/reset-password/<reset_token>")
+@x.no_cache
+def view_reset_password(reset_token):
+    try:
+        ic("Reset token received:", reset_token)
+        x.validate_uuid4(reset_token)
+        current_time = int(time.time())
+        
+        db, cursor = x.db()
+        q = """SELECT user_pk FROM users 
+               WHERE user_reset_token = %s 
+               AND user_reset_token_expires > %s"""
+        cursor.execute(q, (reset_token, current_time))
+        user = cursor.fetchone()
+        
+        ic("User found", user)
+
+        if not user:
+            return "Invalid or expired reset token", 400
+            
+        return render_template("view_reset_password.html", reset_token=reset_token, x=x)
+    
+    except Exception as ex:
+        ic(ex)
+        return "Invalid reset token", 400
+    finally:
+        if "cursor" in locals(): cursor.close()
+        if "db" in locals(): db.close()
+
+@app.post("/reset-password/<reset_token>")
+@x.no_cache
+def reset_password(reset_token):
+    try:
+        x.validate_uuid4(reset_token)
+        user_password = x.validate_user_password()
+        current_time = int(time.time())
+        
+        db, cursor = x.db()
+        
+        # Verify token is valid and not expired
+        q = """SELECT user_pk FROM users 
+               WHERE user_reset_token = %s 
+               AND user_reset_token_expires > %s"""
+        cursor.execute(q, (reset_token, current_time))
+        user = cursor.fetchone()
+        
+        if not user:
+            toast = render_template("___toast.html", message="Invalid or expired reset token")
+            return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 400
+            
+        # Update password and clear reset token
+        hashed_password = generate_password_hash(user_password)
+        q = """UPDATE users 
+               SET user_password = %s, 
+                   user_reset_token = NULL, 
+                   user_reset_token_expires = NULL 
+               WHERE user_reset_token = %s"""
+        cursor.execute(q, (hashed_password, reset_token))
+        
+        db.commit()
+        
+        toast = render_template("___toast.html", message="Password successfully reset")
+        return f"""<template mix-target="#toast" mix-bottom>{toast}</template>
+                  <template mix-redirect="/login"></template>"""
+        
+    except Exception as ex:
+        ic(ex)
+        if "db" in locals(): db.rollback()
+        if isinstance(ex, x.CustomException):
+            toast = render_template("___toast.html", message=ex.message)
+            return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", ex.code
+        return "<template>System under maintenance</template>", 500
+    finally:
+        if "cursor" in locals(): cursor.close()
+        if "db" in locals(): db.close()
+
 ##############################
 # Signup
 ##############################
@@ -402,12 +532,15 @@ def create_user():
         user_updated_at = 0
         user_verified_at = 0
         user_verification_key = str(uuid.uuid4())
+        user_reset_token = 0
+        user_reset_token_expires = 0
 
         db, cursor = x.db()
-        q = 'INSERT INTO users VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
+        q = 'INSERT INTO users VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
         cursor.execute(q, (user_pk, user_name, user_last_name, user_email, 
                         hashed_password, user_created_at, user_deleted_at, user_blocked_at, 
-                        user_updated_at, user_verified_at, user_verification_key))
+                        user_updated_at, user_verified_at, user_verification_key,
+                        user_reset_token, user_reset_token_expires))
         
         role_fk = x.CUSTOMER_ROLE_PK
         q_roles = 'INSERT INTO users_roles (user_role_user_fk, user_role_role_fk) VALUES (%s, %s)'
