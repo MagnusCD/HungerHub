@@ -88,10 +88,23 @@ try:
             item_updated_at INTEGER UNSIGNED,
             PRIMARY KEY(item_pk)
         );
-        """        
+        """
     cursor.execute(q)
     cursor.execute("ALTER TABLE items ADD FOREIGN KEY (item_user_fk) REFERENCES users(user_pk) ON DELETE CASCADE ON UPDATE RESTRICT")
 
+    ##################################
+    ######  Create item_images table
+    ##################################
+    q = """
+        CREATE TABLE item_images (
+            image_pk CHAR(36),
+            item_fk CHAR(36),
+            image_file VARCHAR(50) NOT NULL,
+            PRIMARY KEY(image_pk),
+            FOREIGN KEY (item_fk) REFERENCES items(item_pk) ON DELETE CASCADE ON UPDATE RESTRICT
+        );
+        """
+    cursor.execute(q)
 
     ###############################
     ######   Create roles

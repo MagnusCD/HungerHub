@@ -117,26 +117,32 @@ def validate_uuid4(uuid4 = ""):
 UPLOAD_ITEM_FOLDER = './static/dishes'
 ALLOWED_ITEM_FILE_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
 
-def validate_item_image():
-    # Ensure 'item_image' is in request.files
-    if 'item_image' not in request.files:
-        raise_custom_exception("item_image missing", 400)
+def validate_item_images():
+    # Ensure 'item_images' is in request.files
+    if 'item_images' not in request.files:
+        raise_custom_exception("item_images missing", 400)
 
-    # Get the uploaded file
-    file = request.files.get("item_image", None)
-    if not file or file.filename.strip() == "":
-        raise_custom_exception("item_image name invalid", 400)
+    # Get the list of uploaded files
+    files = request.files.getlist("item_images")
+    if not files or len(files) == 0:
+        raise_custom_exception("No item_images uploaded", 400)
+    
+    # Validate each file
+    filenames = []
+    for file in files:
+        if not file.filename.strip():
+            raise_custom_exception("One of the item_images has an invalid name", 400)
+    
+        # Extract and validate the file extension
+        file_extension = os.path.splitext(file.filename)[1][1:].lower()  # Get extension without '.'
+        if not file_extension or file_extension not in ALLOWED_ITEM_FILE_EXTENSIONS:
+            raise_custom_exception("One of the item_images has an invalid extension", 400)
 
-    # Extract the file extension
-    file_extension = os.path.splitext(file.filename)[1][1:].lower()  # Get extension without '.'
-    if not file_extension:
-        raise_custom_exception("item_image has no valid extension", 400)
-    if file_extension not in ALLOWED_ITEM_FILE_EXTENSIONS:
-        raise_custom_exception("item_image invalid extension", 400)
+        # Generate a safe filename
+        filename = f"{uuid.uuid4()}.{file_extension}"
+        filenames.append((file, filename)) # appending both the file object and the generated filename
 
-    # Generate a safe filename
-    filename = f"{uuid.uuid4()}.{file_extension}"
-    return file, filename
+    return filenames
 
     
 ##############################

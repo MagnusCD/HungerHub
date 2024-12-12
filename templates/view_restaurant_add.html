@@ -5,7 +5,7 @@
                     <div>
                         <h2>Add item</h2>
 
-                        <form class="restaurant_item_form" id="frm_item_add">
+                        <form class="restaurant_item_form" id="frm_item_add" enctype="multipart/form-data">
                             <div>
                                 <label for="item_title">Item name</label>
                                 <input type="text" name="item_title" mix-check="{{ x.ITEM_TITLE_REGEX }}" >
@@ -22,8 +22,8 @@
                             </div>
 
                             <div class="image_input">
-                                <label for="item_image">Upload image</label>
-                                <input type="file" name="item_image" accept=".png, .jpg, .jpeg, .gif">
+                                <label for="item_image">Upload image(s)</label>
+                                <input type="file" name="item_images" accept=".png, .jpg, .jpeg, .gif" multiple>
                             </div>
 
                             <button class="cta" mix-post="/items" mix-data="#frm_item_add">Add item</button>
