@@ -492,8 +492,6 @@ def create_item():
             """
             cursor.execute(q, (str(uuid.uuid4()), item_pk, filename))
         
-        
-        ic(images) # log validated images list
         # Commit the transaction to save the item
         db.commit()
 

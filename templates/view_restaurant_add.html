@@ -22,9 +22,13 @@
                             </div>
 
                             <div class="image_input">
-                                <label for="item_image">Upload image(s)</label>
-                                <input type="file" name="item_images" accept=".png, .jpg, .jpeg, .gif" multiple>
+                                <label for="item_images">Upload maximum 3 images</label>
+                                <input type="file" name="item_images" id="item_images" accept=".png, .jpg, .jpeg, .gif" multiple>
+                                <div id="image_names"></div>
                             </div>
+                        
+                            <!-- Placeholder for displaying selected images -->
+                            <div id="image_preview"></div>
 
                             <button class="cta" mix-post="/items" mix-data="#frm_item_add">Add item</button>
                         </form>
