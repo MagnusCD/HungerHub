@@ -140,6 +140,7 @@ def view_customer_single(user_pk):
         # Fetch items for the specific restaurant
         q_items = """
             SELECT
+                i.item_pk,
                 i.item_title,
                 i.item_description,
                 i.item_price,
@@ -1095,6 +1096,7 @@ def verify_user(verification_key):
 ##############################
 @app.post("/buy/<item_pk>")
 def buy_item(item_pk):
+    
     try:
         db, cursor = x.db()
 
@@ -1106,7 +1108,7 @@ def buy_item(item_pk):
         # Extract the user ID from the session
         user_pk = session.get("user").get("user_pk")
 
-        # Send the purchase notification email
+        # Send the purchase notification email with item_pk
         x.send_purchase_notification_email(item_pk)
 
         return "Purchase notification sent", 200

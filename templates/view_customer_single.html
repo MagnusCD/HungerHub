@@ -1,35 +1,31 @@
 {% include "_top_logged.html" %}
 
-        <main class="customer_single_main">
-            <section class="customer_single">
-                <h1 class="single_h1">{{ restaurant.restaurant_name }} menu</h1>
-                <!-- Restaurant Items -->
-                <section class="customer_single_items">
-                    <ul>
-                        {% for item in items %}
-                            <li>
-                                {% if item.item_image %}
-                                
-                                    <img class="dish" src="{{ url_for('static', filename='dishes/' + item.item_image) }}" alt="{{ item.item_title }}">
-                       
-                                {% endif %}
-                                <div>
-                                    <h3>{{ item.item_title }}</h3>
-                                    <p>{{ item.item_description }}</p>
-                                    <p>Price: ${{ item.item_price }}</p>
-                                    <div>
-                                        <form id="frm_buy">
-                                        <button class="buy" mix-data="#frm_buy" mix-post="/buy/{{user_pk}}">Buy</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </li>
-                        {% else %}
-                            <li>No items available for this restaurant.</li>
-                        {% endfor %}
-                    </ul>
-                </section>
-            </section>
-        </main>
+<main class="customer_single_main">
+    <section class="customer_single">
+        <h1 class="single_h1">{{ restaurant.restaurant_name }} menu</h1>
+        <!-- Restaurant Items -->
+        <section class="customer_single_items">
+            <ul>
+                {% for item in items %}
+                    <li>
+                        {% if item.item_image %}
+                            <img class="dish" src="{{ url_for('static', filename='dishes/' + item.item_image) }}" alt="{{ item.item_title }}">
+                        {% endif %}
+                        <div>
+                            <h3>{{ item.item_title }}</h3>
+                            <p>{{ item.item_description }}</p>
+                            <p>Price: ${{ item.item_price }}</p>
+                            <form id="frm_buy_{{ item.item_pk }}">
+                                <button class="buy" mix-post="/buy/{{ item.item_pk }}" mix-data="#frm_buy_{{ item.item_pk }}">Buy</button>
+                            </form>
+                        </div>
+                    </li>
+                {% else %}
+                    <li>No items available for this restaurant.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </section>
+</main>
 
 {% include "_bottom.html" %}

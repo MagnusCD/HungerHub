@@ -357,7 +357,7 @@ def send_purchase_notification_email(item_pk):
     message["Subject"] = "Item bought"
 
     # Body of the email
-    body = f"Item ID {item_pk} was bought"
+    body = f"""Item ID {item_pk} was bought"""
     message.attach(MIMEText(body, "html"))
 
     # Connect to Gmail's SMTP server and send the email
