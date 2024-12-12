@@ -18,7 +18,9 @@
                                     <p>{{ item.item_description }}</p>
                                     <p>Price: ${{ item.item_price }}</p>
                                     <div>
-                                    <button class="buy">Buy</button>
+                                        <form id="frm_buy">
+                                        <button class="buy" mix-data="#frm_buy" mix-post="/buy/{{user_pk}}">Buy</button>
+                                        </form>
                                     </div>
                                 </div>
                             </li>

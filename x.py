@@ -312,3 +312,37 @@ def send_email_item_unblock(item_pk):
         return "email sent"
 
 
+##############################
+##############################
+def send_purchase_notification_email(item_pk):
+    # Email and password of the senders Gmail account
+    sender_email = "webdevkea2024@gmail.com"
+    password = "cjsp pvow yfmq lyio"
+
+    # Receiver email address (fixed restaurant's email address for notifications)
+    receiver_email = "webdevkea2024@gmail.com"  # Set this to your restaurant's email
+
+    # Create email message
+    message = MIMEMultipart()
+    message["From"] = "HungerHub"
+    message["To"] = receiver_email
+    message["Subject"] = "Item bought"
+
+    # Body of the email
+    body = f"Item ID {item_pk} was bought"
+    message.attach(MIMEText(body, "html"))
+
+    # Connect to Gmail's SMTP server and send the email
+    with smtplib.SMTP("smtp.gmail.com", 587) as server:
+        server.starttls()  # Upgrade the connection to secure
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, message.as_string())
+
+    print("Email sent successfully!")
+
+    return "email sent"
+
+
+
+
+

@@ -520,6 +520,43 @@ def create_item():
         if "cursor" in locals(): cursor.close()
         if "db" in locals(): db.close()
 
+
+##############################
+# Buy button action
+##############################
+@app.post("/buy/<item_pk>")
+def buy_item(item_pk):
+    try:
+        db, cursor = x.db()
+
+        # Check if the user is logged in
+        if not session.get("user"):
+            toast = render_template("___toast.html", message="Please login to buy an item")
+            return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 401
+        
+        # Extract the user ID from the session
+        user_pk = session.get("user").get("user_pk")
+
+        # Send the purchase notification email
+        x.send_purchase_notification_email(item_pk)
+
+        return "Purchase notification sent", 200
+
+    except Exception as ex:
+        ic(ex)
+        if isinstance(ex, x.mysql.connector.Error):
+            ic(ex)
+            return "<template>System upgrading</template>", 500
+
+        return "<template>System under maintenance</template>", 500
+    finally:
+        # Close database resources
+        if "cursor" in locals(): cursor.close()
+        if "db" in locals(): db.close()
+
+
+
+
 #################################
 #################################
 #################################
