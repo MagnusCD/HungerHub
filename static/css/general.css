@@ -136,6 +136,7 @@ form.profile {
 
 main.login, main.signup, main.index {
     background-color: var(--primary-col);
+    height: 100vh;
 }
 
 main.login, main.signup {

@@ -99,20 +99,34 @@ a.card {
 
 /* Customer singleview */
 
-@media (max-width: 582px) {
 
-    section.customer_single section.customer_single_items > ul{
-    grid-template-columns: repeat(1, minmax(0, 1fr)); 
+
+@media (min-width: 320px) and (max-width: 449px) {
+    section.customer_single section.customer_single_items > ul {
+        grid-template-columns: repeat(1, minmax(0, 1fr)); 
+    }
+}
+
+@media (min-width: 450px) and (max-width: 708px) {
+    section.customer_single section.customer_single_items > ul {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    }
+}
+
+@media (min-width: 709px) and (max-width: 900px) {
+    section.customer_single section.customer_single_items > ul {
+        grid-template-columns: repeat(3, minmax(0, 1fr)); 
+    }
+}
+
+@media (min-width: 901px) {
+    section.customer_single section.customer_single_items > ul {
+        grid-template-columns: repeat(4, minmax(0, 1fr)); 
     }
 }
 
 
-@media (min-width: 583px) {
 
-    section.customer_single section.customer_single_items > ul{
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
 
 
 section.customer_single {
@@ -148,7 +162,7 @@ section.customer_single {
     }
 
     img.dish {
-        height: 7rem;
+        height: 8rem;
         border-radius: 0.2rem 0.2rem 0 0;
     }
 }
