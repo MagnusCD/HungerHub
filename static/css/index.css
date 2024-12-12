@@ -1,4 +1,4 @@
-@media (min-width: 1050px) {
+@media (min-width: 800px) {
 
 main.index {
     display: grid;
@@ -16,9 +16,6 @@ main.index {
 /* Placer elementerne i deres grid-områder */
 h1.header {
     grid-area: header;
-    color: var(--secondary-col);
-    font-size: var(--font-logo-rem-desk);
-
 }
 
 .header_logo {
@@ -46,9 +43,26 @@ h1.header {
     text-align: start;
 }
 
+h1.header {
+    font-size: var(--font-h1-rem-desk);
+}
+
+
+}
+
+img.img_logo {
+    width: 4rem;
+    height: 4rem;
+}
+
 .btn {
     font-size: var(--font-cta-rem-desk);
     font-weight: var(--font-weight-header-mid);
+}
+
+h1.header {
+    color: var(--secondary-col);
+    font-weight: var(--font-weight-header-large);
 }
 
 p.large {
@@ -59,9 +73,53 @@ p.large {
 
 }
 
-img.img_logo {
-    width: 4rem;
-    height: 4rem;
+
+
+@media (max-width: 799px) {
+    p {
+        display:none;
+    }
+
+    h1.header {
+        font-size: var(--font-cta-rem-desk);
+    }
+
+    main.index {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .none {
+        display: none;
+    }
+
+    main.index {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 6 lige store kolonner */
+        grid-template-rows: auto auto auto auto; /* 3 rækker */
+        grid-template-areas: 
+            "header header"    /* Række 1: h1 fylder to kolonner, logo fylder 1 */
+            "btn btn";         /* Række 2: btn fylder kolonne 3-4 */
+        gap: 3rem; /* Giver mellemrum mellem grid-items */
+        padding: 1rem;
+        align-content: space-evenly;
+    }
+
+    /* Placer elementerne i deres grid-områder */
+h1.header {
+    grid-area: header;
+    text-align: center;
+}
+
+
+.btn {
+    grid-area: btn;
+    display: flex; /* Bevarer flex-opførsel inde i section.btn */
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-content: space-around;
 }
 
 }
