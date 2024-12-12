@@ -114,7 +114,7 @@ def validate_uuid4(uuid4 = ""):
 
 
 ##############################
-UPLOAD_ITEM_FOLDER = './images'
+UPLOAD_ITEM_FOLDER = './static/dishes'
 ALLOWED_ITEM_FILE_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
 
 def validate_item_image():
