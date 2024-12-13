@@ -1,10 +1,9 @@
-<script src="{{url_for('static', filename='app.js')}}"></script>
-<script src="{{url_for('static', filename='mixhtml.js')}}"></script>
-
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- Initialize the map before rendering items -->
 <script>
     // Initialize the map
-    var map = L.map('map').setView([55.6845, 12.564148], 12);
+    var map = L.map('map').setView([55.6845, 12.564148], 12);  // Centered on Copenhagen
 
     // Add OpenStreetMap tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -12,25 +11,21 @@
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // Restaurant locations
-    var restaurantLocations = [
-        { user_pk: "fe0bd5c5-8cce-4bbd-9a3c-9eb844b85188", name: "Aarhus Alchemy", coords: [56.1629, 10.2039], popup: "Aarhus Alchemy" },
-        { user_pk: "78e32047-d5dc-486d-b191-cc8df3b33b03", name: "Viking Feast", coords: [55.7023, 12.5635], popup: "Viking Feast" },
-        { user_pk: "2252f18f-9ee0-4f71-90cd-6e81dbbb25a6", name: "Hygge Dining", coords: [55.6857, 12.5769], popup: "Hygge Dining" },
-        { user_pk: "6a13fed1-d336-4ae9-88a6-bf0e940243bf", name: "Fjord Flavors", coords: [55.6714, 12.5632], popup: "Fjord Flavors" },
-        { user_pk: "d9f4549f-2ec6-487a-a433-4a61f40a4844", name: "The Pickled Herring", coords: [55.6755, 12.5700], popup: "The Pickled Herring" },
-        { user_pk: "05c1a0ad-9298-47dd-a39b-c146aa824693", name: "Little Mermaid Café", coords: [55.6948, 12.6035], popup: "Little Mermaid Café" },
-        { user_pk: "80983ba6-590f-4bed-aecb-15629b734fca", name: "Kronborg Kitchen", coords: [56.0320, 12.6122], popup: "Kronborg Kitchen" },
-        { user_pk: "8e756525-8a43-4cf6-8b99-adce4fd4f886", name: "Tivoli Treats", coords: [55.6725, 12.5632], popup: "Tivoli Treats" },
-        { user_pk: "2dc196d1-36ac-4e90-a3d4-b6991dc6b81e", name: "Baltic Bistro", coords: [55.6902, 12.5679], popup: "Baltic Bistro" },
-        { user_pk: "cf47c6ff-bbdd-47c0-adbe-6a646164e2a9", name: "Midnight Mackerel", coords: [55.7010, 12.5765], popup: "Midnight Mackerel" },
-        { user_pk: "4b5869e2-bbc8-4ee3-b726-1c784b6bd78b", name: "The Carlsberg Grill", coords: [55.6659, 12.4958], popup: "The Carlsberg Grill" },
-        { user_pk: "cc15ec59-1cf3-405f-8857-d799b0e63c3e", name: "Copenhagen Comforts", coords: [55.6822, 12.5743], popup: "Copenhagen Comforts" }
-    ];
-
-    // Send the restaurant data to render_items
-    render_items(JSON.stringify(restaurantLocations));  // Calling function with the data as a JSON string
-
+    // Make the map object globally accessible for use in app.js
+    window.map = map;  // This ensures the map object is available in app.js
 </script>
+
+<!-- Load your app.js script before the script where you call render_items -->
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+<!-- Now you can safely call the render_items function after the app.js script is loaded -->
+<script>
+    // Pass the restaurant data directly as a JavaScript object
+    const restaurants = JSON.parse('{{ restaurants | tojson | safe }}');
+    render_items(restaurants);  // Now you can safely pass the data as an object
+</script>
+
+<!-- Load any other scripts (e.g., mixhtml.js) -->
+<script src="{{ url_for('static', filename='mixhtml.js') }}"></script>
 </body>
 </html>

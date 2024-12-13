@@ -1,16 +1,39 @@
-// For MAP
 function render_items(data) {
-    data = JSON.parse(data);
-    data.forEach(e => {
-        // Create the marker
-        var marker = L.marker(e.coords).addTo(map);
+    console.log("Rendering items:", data); // Debugging: Log the restaurant data
 
+    // Ensure the map is initialized
+    if (!window.map) {
+        console.error("Map is not initialized.");
+        return;
+    }
+
+    // Loop through each restaurant data and create markers
+    data.forEach(e => {
+        if (typeof e.user_coords_lat !== 'number' || typeof e.user_coords_long !== 'number') {
+            console.error(`Invalid coordinates for restaurant ${e.restaurant_name}`, e);
+            return; // Skip invalid restaurant
+        }
+
+        // Log the data being used to create the marker
+        console.log(`Creating marker for ${e.restaurant_name} at ${e.user_coords_lat}, ${e.user_coords_long}`);
+
+        // Create the marker on the map using Leaflet
+        const marker = L.marker([e.user_coords_lat, e.user_coords_long]);
+
+        // Log the marker to check its validity
+        console.log('Created marker:', marker);
+        console.log("e is:", e);
+
+        // Add the marker to the map
+        marker.addTo(window.map);  // Use window.map to ensure it's the global map object
+    
         // Bind the popup with the restaurant's name and a link to the customer-single page
         marker.bindPopup(`
-            <a href="/customer-single/${e.user_pk}">${e.name}</a>
+            <a href="/customer-single/${e.user_pk}">${e.restaurant_name}</a>
         `);
     });
 }
+
 
 
 

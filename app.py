@@ -92,7 +92,9 @@ def view_customer():
         q = """
             SELECT DISTINCT
                 u.user_pk,
-                u.user_name AS restaurant_name
+                u.user_name AS restaurant_name,
+                u.user_coords_lat,
+                u.user_coords_long
             FROM users u
             JOIN users_roles ur ON u.user_pk = ur.user_role_user_fk
             WHERE ur.user_role_role_fk = %s AND u.user_deleted_at = 0

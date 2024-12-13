@@ -15,7 +15,7 @@ db, cursor = x.db()
 def insert_user(user):
     q = f"""
         INSERT INTO users
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """
     values = tuple(user.values())
     cursor.execute(q, values)
@@ -43,6 +43,8 @@ try:
             user_verification_key CHAR(36),
             user_reset_token CHAR(36),
             user_reset_token_expires INTEGER UNSIGNED,
+            user_coords_lat FLOAT,
+            user_coords_long FLOAT,
             PRIMARY KEY(user_pk)
         )
         """
@@ -136,7 +138,9 @@ try:
         "user_verified_at" : int(time.time()),
         "user_verification_key" : str(uuid.uuid4()),
         "user_reset_token": 0,
-        "user_reset_token_expires": 0
+        "user_reset_token_expires": 0,
+        "user_coords_lat": 0,
+        "user_coords_long": 0
     }
     insert_user(user)
     # Assign role to admin user
@@ -163,7 +167,9 @@ try:
         "user_verified_at" : int(time.time()),
         "user_verification_key" : str(uuid.uuid4()),
         "user_reset_token": 0,
-        "user_reset_token_expires": 0
+        "user_reset_token_expires": 0,
+        "user_coords_lat": 0,
+        "user_coords_long": 0
     }
     insert_user(user)
     # Assign role to customer user
@@ -190,7 +196,9 @@ try:
         "user_verified_at" : int(time.time()),
         "user_verification_key" : str(uuid.uuid4()),
         "user_reset_token": 0,
-        "user_reset_token_expires": 0
+        "user_reset_token_expires": 0,
+        "user_coords_lat": 0,
+        "user_coords_long": 0
     }
     insert_user(user)
     # Assign role to partner user
@@ -217,7 +225,9 @@ try:
         "user_verified_at" : int(time.time()),
         "user_verification_key" : str(uuid.uuid4()),
         "user_reset_token": 0,
-        "user_reset_token_expires": 0
+        "user_reset_token_expires": 0,
+        "user_coords_lat": round(random.uniform(55.65, 56.00), 6),  # Example range
+        "user_coords_long": round(random.uniform(12.50, 13.00), 6),  # Example range
     }
     insert_user(user)
     # Assign role to restaurant user
@@ -249,7 +259,9 @@ try:
             "user_verified_at" : user_verified_at,
             "user_verification_key" : str(uuid.uuid4()),
             "user_reset_token": 0,
-            "user_reset_token_expires": 0
+            "user_reset_token_expires": 0,
+            "user_coords_lat": 0,
+            "user_coords_long": 0
         }
         insert_user(user)
         # assign role to customer users
@@ -278,7 +290,9 @@ try:
             "user_verified_at" : user_verified_at,
             "user_verification_key" : str(uuid.uuid4()),
             "user_reset_token": 0,
-            "user_reset_token_expires": 0
+            "user_reset_token_expires": 0,
+            "user_coords_lat": 0,
+            "user_coords_long": 0
         }
         insert_user(user)
         # assign role to partner users
@@ -315,7 +329,9 @@ try:
             "user_verified_at" : user_verified_at,
             "user_verification_key" : str(uuid.uuid4()),
             "user_reset_token": 0,
-            "user_reset_token_expires": 0
+            "user_reset_token_expires": 0,
+            "user_coords_lat": round(random.uniform(55.65, 56.00), 6),  # Example range
+            "user_coords_long": round(random.uniform(12.50, 13.00), 6),  # Example range
         }
         insert_user(user)
         # assign role to restaurant users
