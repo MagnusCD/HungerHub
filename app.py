@@ -661,7 +661,7 @@ def create_item():
         item_deleted_at = 0
         item_blocked_at = 0
         item_updated_at = 0
-    
+        
         # Save the first image to the 'items' table
         main_image_file, main_image_name = images[0]
         main_image_file.save(os.path.join(x.UPLOAD_ITEM_FOLDER, main_image_name))
@@ -876,18 +876,20 @@ def item_update():
         item_description = x.validate_item_description()
         item_price = x.validate_item_price()
         item_updated_at = int(time.time())
-        
+
         # Validate and process the new image if provided
-        file, item_image = x.validate_item_image()
-        # Save the new image file
-        file.save(os.path.join(x.UPLOAD_ITEM_FOLDER, item_image))
+        images = x.validate_item_images()
+
+        # Save the first image to the 'items' table
+        main_image_file, main_image_name = images[0]
+        main_image_file.save(os.path.join(x.UPLOAD_ITEM_FOLDER, main_image_name))
 
         db, cursor = x.db()
         q = """ UPDATE items
                 SET item_title = %s, item_description = %s, item_price = %s, item_image = %s, item_updated_at = %s
                 WHERE item_pk = %s
             """
-        cursor.execute(q, (item_title, item_description, item_price, item_image, item_updated_at, item_pk))
+        cursor.execute(q, (item_title, item_description, item_price, main_image_name, item_updated_at, item_pk))
 
         # Ensure exactly one row was updated
         if cursor.rowcount != 1:
