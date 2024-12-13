@@ -591,13 +591,15 @@ def create_user():
         user_verification_key = str(uuid.uuid4())
         user_reset_token = 0
         user_reset_token_expires = 0
+        user_coords_lat = 0
+        user_coords_long =0
 
         db, cursor = x.db()
-        q = 'INSERT INTO users VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
+        q = 'INSERT INTO users VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
         cursor.execute(q, (user_pk, user_name, user_last_name, user_email, 
                         hashed_password, user_created_at, user_deleted_at, user_blocked_at, 
                         user_updated_at, user_verified_at, user_verification_key,
-                        user_reset_token, user_reset_token_expires))
+                        user_reset_token, user_reset_token_expires, user_coords_lat, user_coords_long))
         
         role_fk = x.CUSTOMER_ROLE_PK
         q_roles = 'INSERT INTO users_roles (user_role_user_fk, user_role_role_fk) VALUES (%s, %s)'
