@@ -734,7 +734,8 @@ def user_block(user_pk):
         db, cursor = x.db()
         cursor.execute('UPDATE users SET user_blocked_at = %s WHERE user_pk = %s', (user_blocked_at, user_pk))
         if cursor.rowcount != 1:
-            return "<template>Could not block user</template>", 400
+            toast = render_template("___toast.html", message="Could not block user")
+            return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 400
         db.commit()
 
         x.send_email_user_block(user_pk)
@@ -781,7 +782,8 @@ def user_unblock(user_pk):
         db, cursor = x.db()
         cursor.execute('UPDATE users SET user_blocked_at = %s WHERE user_pk = %s', (user_blocked_at, user_pk))
         if cursor.rowcount != 1:
-            return "<template>Could not unblock user</template>", 400
+            toast = render_template("___toast.html", message="Could not unblock user")
+            return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 400
         db.commit()
 
         x.send_email_user_unblock(user_pk)

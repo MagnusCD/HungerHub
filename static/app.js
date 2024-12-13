@@ -12,6 +12,8 @@ function render_items(data) {
     });
 }
 
+
+
 // For Search button
 document.addEventListener('DOMContentLoaded', function() {
     // Attach the input event listener to the search input field
@@ -36,6 +38,9 @@ function filterRestaurants(event) {
         }
     });
 }
+
+
+
 
 // For uploading images on the view_customer_add.html page
 let selectedFiles = [];
