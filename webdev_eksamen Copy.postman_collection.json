@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "20257ed0-e2da-4e88-895a-0d2b2de73b09",
+		"_postman_id": "51477188-9faf-4e04-8058-445db3eea95d",
 		"name": "webdev_eksamen Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23142802",
-		"_collection_link": "https://orange-spaceship-638260.postman.co/workspace/My-Workspace~b339cb78-a84f-4f0a-834a-aa459024ce65/collection/23142802-20257ed0-e2da-4e88-895a-0d2b2de73b09?action=share&source=collection_link&creator=23142802"
+		"_collection_link": "https://orange-spaceship-638260.postman.co/workspace/My-Workspace~b339cb78-a84f-4f0a-834a-aa459024ce65/collection/23142802-51477188-9faf-4e04-8058-445db3eea95d?action=share&source=collection_link&creator=23142802"
 	},
 	"item": [
 		{
@@ -213,10 +213,16 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"password\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Password\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"</template>\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"8\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"50\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
 									"});\r",
 									""
 								],
@@ -269,13 +275,13 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"password\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Password\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"8\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"</template>\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
 									"});\r",
 									""
 								],
@@ -328,13 +334,13 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"password\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Password\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"50\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"</template>\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
 									"});\r",
 									""
 								],
@@ -387,7 +393,7 @@
 									"    pm.response.to.have.status(401);\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"invalid\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Invalid credentials\");\r",
 									"});\r",
 									"\r",
 									""
@@ -574,7 +580,7 @@
 								},
 								{
 									"key": "user_email",
-									"value": "sof@sof.dk",
+									"value": "sofia@gmail.com",
 									"type": "text"
 								},
 								{
@@ -1225,7 +1231,7 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"email not available\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email not available\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"</template>\");\r",
@@ -1291,7 +1297,7 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"password\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Password\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"</template>\");\r",
@@ -1357,7 +1363,7 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"password\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Password\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"8\");\r",
@@ -1426,7 +1432,7 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"password\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Password\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"50\");\r",
@@ -1490,6 +1496,58 @@
 			"name": "user",
 			"item": [
 				{
+					"name": "login success admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template mix-redirect\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_email",
+									"value": "admin@fulldemo.com",
+									"type": "text"
+								},
+								{
+									"key": "user_password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "127.0.0.1/login",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "delete user",
 					"event": [
 						{
@@ -1499,10 +1557,17 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"<template>user deleted</template>\");\r",
-									"});"
+									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"User deleted\");\r",
+									"});\r",
+									"\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -1517,7 +1582,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "127.0.0.1/users/1cebff5e-2a9a-4a5a-b4b2-318ee3736ae2",
+							"raw": "127.0.0.1/users/0a6163ed-a60f-4cd4-b8cd-96dada8cf4ce",
 							"host": [
 								"127",
 								"0",
@@ -1526,7 +1591,7 @@
 							],
 							"path": [
 								"users",
-								"1cebff5e-2a9a-4a5a-b4b2-318ee3736ae2"
+								"0a6163ed-a60f-4cd4-b8cd-96dada8cf4ce"
 							]
 						}
 					},
@@ -1543,7 +1608,13 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"<template>user updated</template>\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"User updated\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -1624,7 +1695,7 @@
 							"formdata": [
 								{
 									"key": "item_title",
-									"value": "blisindsy",
+									"value": "hahahaitem",
 									"type": "text"
 								},
 								{
@@ -1634,13 +1705,13 @@
 								},
 								{
 									"key": "item_price",
-									"value": "12.00",
+									"value": "20",
 									"type": "text"
 								},
 								{
-									"key": "item_image",
+									"key": "item_images",
 									"type": "file",
-									"src": "/C:/Users/sofia/OneDrive/Skrivebord/image_1.jpg"
+									"src": "/C:/Users/sofia/OneDrive/Skrivebord/pastapesto.png"
 								}
 							]
 						},
@@ -2153,13 +2224,16 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"Price\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"decimal number\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"valid number\");\r",
 									"});\r",
 									""
 								],
@@ -2297,7 +2371,7 @@
 									"    pm.expect(pm.response.text()).to.include(\"Price\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"10000.00\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"9999.99\");\r",
 									"});\r",
 									""
 								],
@@ -2363,12 +2437,8 @@
 									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"item_image\");\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"empthy\");\r",
-									"});\r",
-									""
+									"    pm.expect(pm.response.text()).to.include(\"item_images missing\");\r",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -2466,7 +2536,7 @@
 									"type": "text"
 								},
 								{
-									"key": "item_image",
+									"key": "item_images",
 									"type": "file",
 									"src": "/C:/Users/sofia/OneDrive/Skrivebord/imageinvalidtest"
 								}
@@ -2489,6 +2559,29 @@
 				},
 				{
 					"name": "update item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Item updated\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -2534,6 +2627,31 @@
 				},
 				{
 					"name": "delete item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Item deleted\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -2587,7 +2705,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "127.0.0.1/users/block/9148bc11-ab97-4cfb-96fc-1c4e487f0fe5",
+							"raw": "127.0.0.1/users/block/06e69e6d-5bea-4d15-86c4-ae05ccdb559a",
 							"host": [
 								"127",
 								"0",
@@ -2597,7 +2715,7 @@
 							"path": [
 								"users",
 								"block",
-								"9148bc11-ab97-4cfb-96fc-1c4e487f0fe5"
+								"06e69e6d-5bea-4d15-86c4-ae05ccdb559a"
 							]
 						}
 					},
@@ -2612,6 +2730,12 @@
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
 									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"invalid uuid4\");\r",
@@ -2653,7 +2777,13 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Cannot block user\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"template\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Could not block user\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -2695,6 +2825,9 @@
 									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"blocked\");\r",
 									"});"
 								],
@@ -2707,7 +2840,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "127.0.0.1/items/block/0295e93a-8b54-4056-8202-5c4c28c69733",
+							"raw": "127.0.0.1/items/block/0258fe74-a25b-444f-a2c0-98280b5a92e0",
 							"host": [
 								"127",
 								"0",
@@ -2717,7 +2850,7 @@
 							"path": [
 								"items",
 								"block",
-								"0295e93a-8b54-4056-8202-5c4c28c69733"
+								"0258fe74-a25b-444f-a2c0-98280b5a92e0"
 							]
 						}
 					},
@@ -2732,6 +2865,12 @@
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
 									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"invalid uuid4\");\r",
@@ -2773,7 +2912,13 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"cannot block item\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Cannot block item\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -2835,7 +2980,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "127.0.0.1/users/unblock/9148bc11-ab97-4cfb-96fc-1c4e487f0fe5",
+							"raw": "127.0.0.1/users/unblock/06e69e6d-5bea-4d15-86c4-ae05ccdb559a",
 							"host": [
 								"127",
 								"0",
@@ -2845,7 +2990,7 @@
 							"path": [
 								"users",
 								"unblock",
-								"9148bc11-ab97-4cfb-96fc-1c4e487f0fe5"
+								"06e69e6d-5bea-4d15-86c4-ae05ccdb559a"
 							]
 						}
 					},
@@ -2860,6 +3005,12 @@
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
 									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"invalid uuid4\");\r",
@@ -2901,7 +3052,13 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Cannot unblock user\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Could not unblock user\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -2943,6 +3100,9 @@
 									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"unblocked\");\r",
 									"});"
 								],
@@ -2955,7 +3115,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "127.0.0.1/items/unblock/0295e93a-8b54-4056-8202-5c4c28c69733",
+							"raw": "127.0.0.1/items/unblock/0258fe74-a25b-444f-a2c0-98280b5a92e0",
 							"host": [
 								"127",
 								"0",
@@ -2965,7 +3125,7 @@
 							"path": [
 								"items",
 								"unblock",
-								"0295e93a-8b54-4056-8202-5c4c28c69733"
+								"0258fe74-a25b-444f-a2c0-98280b5a92e0"
 							]
 						}
 					},
@@ -3021,7 +3181,13 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"cannot unblock item\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Cannot unblock item\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -3110,6 +3276,49 @@
 					"response": []
 				},
 				{
+					"name": "admin page succes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"items\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"users\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1/admin",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"path": [
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "logout",
 					"event": [
 						{
@@ -3144,47 +3353,6 @@
 							],
 							"path": [
 								"logout"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "admin page succes",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"admin\");\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "127.0.0.1/admin",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"path": [
-								"admin"
 							]
 						}
 					},
@@ -3294,46 +3462,6 @@
 					"response": []
 				},
 				{
-					"name": "logout",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"login\");\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "127.0.0.1/logout",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"path": [
-								"logout"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "customer page succes",
 					"event": [
 						{
@@ -3369,6 +3497,46 @@
 							],
 							"path": [
 								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"login\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1/logout",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"path": [
+								"logout"
 							]
 						}
 					},
@@ -3478,46 +3646,6 @@
 					"response": []
 				},
 				{
-					"name": "logout",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"login\");\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "127.0.0.1/logout",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"path": [
-								"logout"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "restaurant page succes",
 					"event": [
 						{
@@ -3553,6 +3681,46 @@
 							],
 							"path": [
 								"restaurant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"login\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1/logout",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"path": [
+								"logout"
 							]
 						}
 					},
@@ -3663,6 +3831,47 @@
 					"response": []
 				},
 				{
+					"name": "restaurant page succes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"partner\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1/partner",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"path": [
+								"partner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "logout",
 					"event": [
 						{
@@ -3697,47 +3906,6 @@
 							],
 							"path": [
 								"logout"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "restaurant page succes",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"<h1>Hi\");\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "127.0.0.1/partner",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"path": [
-								"partner"
 							]
 						}
 					},
@@ -3848,6 +4016,49 @@
 					"response": []
 				},
 				{
+					"name": "get profile admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"profile\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"admin@fulldemo.com\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1/profile",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "login customer for succes",
 					"event": [
 						{
@@ -3897,6 +4108,49 @@
 							],
 							"path": [
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get profile customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"profile\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"customer@fulldemo.com\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1/profile",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"path": [
+								"profile"
 							]
 						}
 					},
@@ -3958,6 +4212,49 @@
 					"response": []
 				},
 				{
+					"name": "get profile restaurant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"profile\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"restaurant@fulldemo.com\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1/profile",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "login partner for succes",
 					"event": [
 						{
@@ -4007,135 +4304,6 @@
 							],
 							"path": [
 								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get profile admin",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"profile\");\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"admin@fulldemo.com\");\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "127.0.0.1/profile",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"path": [
-								"profile"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get profile customer",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"profile\");\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"customer@fulldemo.com\");\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "127.0.0.1/profile",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"path": [
-								"profile"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get profile restaurant",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"profile\");\r",
-									"});\r",
-									"pm.test(\"Body matches string\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"restaurant@fulldemo.com\");\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "127.0.0.1/profile",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"path": [
-								"profile"
 							]
 						}
 					},
@@ -4299,7 +4467,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "127.0.0.1/verify/1ce59ee4-658a-46ce-bbae-9af06dbfeadd",
+							"raw": "127.0.0.1/verify/686d9c4a-1e2e-4848-9427-431d0d776438",
 							"host": [
 								"127",
 								"0",
@@ -4308,7 +4476,7 @@
 							],
 							"path": [
 								"verify",
-								"1ce59ee4-658a-46ce-bbae-9af06dbfeadd"
+								"686d9c4a-1e2e-4848-9427-431d0d776438"
 							]
 						}
 					},
@@ -4385,6 +4553,191 @@
 							"path": [
 								"verify",
 								"9a23e938-c007-499b-b85a-79736a5dc8d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "buy item",
+			"item": [
+				{
+					"name": "login succes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"<template mix-redirect\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_email",
+									"value": "admin@fulldemo.com",
+									"type": "text"
+								},
+								{
+									"key": "user_password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "127.0.0.1/login",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buy item success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"template\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email notification sent for purchase\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1/buy/0258fe74-a25b-444f-a2c0-98280b5a92e0",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"path": [
+								"buy",
+								"0258fe74-a25b-444f-a2c0-98280b5a92e0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"html\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"login\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1/logout",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buy item not logged in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"mix-target\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"template\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Please login to buy an item\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1/buy/0258fe74-a25b-444f-a2c0-98280b5a92e0",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"path": [
+								"buy",
+								"0258fe74-a25b-444f-a2c0-98280b5a92e0"
 							]
 						}
 					},
