@@ -74,7 +74,7 @@ function handleImageUpload(event) {
     // Display file names next to the input field
     fileNamesContainer.innerHTML = ""; // Clear previous file names
     selectedFiles.forEach((file) => {
-        const fileName = document.createElement("span");
+        const fileName = document.createElement("p");
         fileName.textContent = file.name;
         fileName.style.marginRight = "10px"; // Add some space between file names
         fileNamesContainer.appendChild(fileName);
