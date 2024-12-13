@@ -315,6 +315,35 @@ def view_restaurant_edit(item_pk):
 def view_forgot_password():
     return render_template("view_forgot_password.html", x=x)
 
+@app.get("/reset-password/<reset_token>")
+@x.no_cache
+def view_reset_password(reset_token):
+    try:
+        ic("Reset token received:", reset_token)
+        x.validate_uuid4(reset_token)
+        current_time = int(time.time())
+        
+        db, cursor = x.db()
+        q = """SELECT user_pk FROM users 
+                WHERE user_reset_token = %s 
+                AND user_reset_token_expires > %s"""
+        cursor.execute(q, (reset_token, current_time))
+        user = cursor.fetchone()
+        
+        ic("User found", user)
+
+        if not user:
+            return "Invalid or expired reset token", 400
+            
+        return render_template("view_reset_password.html", reset_token=reset_token, x=x)
+    
+    except Exception as ex:
+        ic(ex)
+        return "Invalid reset token", 400
+    finally:
+        if "cursor" in locals(): cursor.close()
+        if "db" in locals(): db.close()
+
 
 ###################################
 ###################################
@@ -390,7 +419,9 @@ def login():
         if "cursor" in locals(): cursor.close()
         if "db" in locals(): db.close()
 
-
+##############################
+# Forgot password
+##############################
 @app.post("/forgot-password")
 @x.no_cache
 def forgot_password():
@@ -410,12 +441,12 @@ def forgot_password():
         
         if not user:
             toast = render_template("___toast.html", message="No user registered with this e-mail was found")
-            return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 200
+            return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 400
 
         # Update user with reset token
-        q = """UPDATE users 
-               SET user_reset_token = %s, user_reset_token_expires = %s 
-               WHERE user_email = %s"""
+        q = """UPDATE users
+                SET user_reset_token = %s, user_reset_token_expires = %s 
+                WHERE user_email = %s"""
         cursor.execute(q, (reset_token, reset_token_expires, user_email))
         
         db.commit()
@@ -423,7 +454,7 @@ def forgot_password():
         # Send reset email
         x.send_reset_password_email(user_email, reset_token)
         
-        toast = render_template("___toast.html", message="If an account exists, a reset link will be sent")
+        toast = render_template("___toast.html", message="An email with reset link has been sent")
         return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 200
 
     except Exception as ex:
@@ -437,35 +468,9 @@ def forgot_password():
         if "cursor" in locals(): cursor.close()
         if "db" in locals(): db.close()
 
-@app.get("/reset-password/<reset_token>")
-@x.no_cache
-def view_reset_password(reset_token):
-    try:
-        ic("Reset token received:", reset_token)
-        x.validate_uuid4(reset_token)
-        current_time = int(time.time())
-        
-        db, cursor = x.db()
-        q = """SELECT user_pk FROM users 
-               WHERE user_reset_token = %s 
-               AND user_reset_token_expires > %s"""
-        cursor.execute(q, (reset_token, current_time))
-        user = cursor.fetchone()
-        
-        ic("User found", user)
-
-        if not user:
-            return "Invalid or expired reset token", 400
-            
-        return render_template("view_reset_password.html", reset_token=reset_token, x=x)
-    
-    except Exception as ex:
-        ic(ex)
-        return "Invalid reset token", 400
-    finally:
-        if "cursor" in locals(): cursor.close()
-        if "db" in locals(): db.close()
-
+##############################
+# Reset password
+##############################
 @app.post("/reset-password/<reset_token>")
 @x.no_cache
 def reset_password(reset_token):
@@ -1096,22 +1101,17 @@ def verify_user(verification_key):
 ##############################
 @app.post("/buy/<item_pk>")
 def buy_item(item_pk):
-    
     try:
-        db, cursor = x.db()
-
         # Check if the user is logged in
         if not session.get("user"):
             toast = render_template("___toast.html", message="Please login to buy an item")
             return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 401
-        
-        # Extract the user ID from the session
-        user_pk = session.get("user").get("user_pk")
 
         # Send the purchase notification email with item_pk
         x.send_purchase_notification_email(item_pk)
 
-        return "Purchase notification sent", 200
+        toast = render_template("___toast.html", message="Email notification sent for purchase")
+        return f"""<template mix-target="#toast" mix-bottom>{toast}</template>""", 200
 
     except Exception as ex:
         ic(ex)
@@ -1121,9 +1121,7 @@ def buy_item(item_pk):
 
         return "<template>System under maintenance</template>", 500
     finally:
-        # Close database resources
-        if "cursor" in locals(): cursor.close()
-        if "db" in locals(): db.close()
+        pass
 
 ##########################
 if __name__ == "__main__":

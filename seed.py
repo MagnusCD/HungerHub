@@ -23,6 +23,7 @@ try:
     ###############################
     ######   Create users table
     ###############################
+    cursor.execute("DROP TABLE IF EXISTS item_images")
     cursor.execute("DROP TABLE IF EXISTS items")
     cursor.execute("DROP TABLE IF EXISTS users_roles")
     cursor.execute("DROP TABLE IF EXISTS users")
