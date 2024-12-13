@@ -330,8 +330,8 @@ try:
             "user_verification_key" : str(uuid.uuid4()),
             "user_reset_token": 0,
             "user_reset_token_expires": 0,
-            "user_coords_lat": round(random.uniform(55.65, 56.00), 6),  # Example range
-            "user_coords_long": round(random.uniform(12.50, 13.00), 6),  # Example range
+            "user_coords_lat": round(random.uniform(55.65, 55.75), 6),
+            "user_coords_long": round(random.uniform(12.50, 12.75), 6),
         }
         insert_user(user)
         # assign role to restaurant users
