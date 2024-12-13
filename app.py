@@ -309,7 +309,9 @@ def view_restaurant_edit(item_pk):
         if "cursor" in locals(): cursor.close()
         if "db" in locals(): db.close()
 
-
+##############################
+# View Forgot password
+##############################
 @app.get("/forgot-password")
 @x.no_cache
 def view_forgot_password():
@@ -324,8 +326,8 @@ def view_reset_password(reset_token):
         current_time = int(time.time())
         
         db, cursor = x.db()
-        q = """SELECT user_pk FROM users 
-                WHERE user_reset_token = %s 
+        q = """SELECT user_pk FROM users
+                WHERE user_reset_token = %s
                 AND user_reset_token_expires > %s"""
         cursor.execute(q, (reset_token, current_time))
         user = cursor.fetchone()

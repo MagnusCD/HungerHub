@@ -66,9 +66,6 @@ function handleImageUpload(event) {
             const img = document.createElement("img");
             img.src = e.target.result;
             img.alt = `Image ${index + 1}`;
-            img.style.width = "100px";
-            img.style.height = "100px";
-            img.style.margin = "5px";
             previewElement.appendChild(img);
         };
         reader.readAsDataURL(file);
