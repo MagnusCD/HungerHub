@@ -78,3 +78,16 @@ form {
         min-width: 6.25rem;
     }
 }
+
+/*********** forgot password  **************/
+
+@media (min-width: 650px) {
+    h1.reset {
+        font-size: var(--font-h1-rem-desk-s);
+    }
+
+}
+
+h1.reset {
+    font-size: var(--font-cta-rem-desk);
+}
