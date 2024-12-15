@@ -18,6 +18,9 @@ CUSTOMER_ROLE_PK = "c56a4180-65aa-42ec-a945-5fd21dec0538"
 PARTNER_ROLE_PK = "f47ac10b-58cc-4372-a567-0e02b2c3d479"
 RESTAURANT_ROLE_PK = "9f8c8d22-5a67-4b6c-89d7-58f8b8cb4e15"
 
+##############################
+# Custom exception
+##############################
 class CustomException(Exception):
     def __init__(self, message, code):
         super().__init__(message)  # Initialize the base class with the message
@@ -27,6 +30,8 @@ class CustomException(Exception):
 def raise_custom_exception(error, status_code):
     raise CustomException(error, status_code)
 
+##############################
+# DB connection
 ##############################
 def db():
     db = mysql.connector.connect(
@@ -39,6 +44,8 @@ def db():
     return db, cursor
 
 ##############################
+# No cache
+##############################
 def no_cache(view):
     @wraps(view)
     def no_cache_view(*args, **kwargs):
@@ -50,6 +57,8 @@ def no_cache(view):
     return no_cache_view
 
 ##############################
+# Validate user name
+##############################
 USER_NAME_MIN = 2
 USER_NAME_MAX = 20
 USER_NAME_REGEX = f"^.{{{USER_NAME_MIN},{USER_NAME_MAX}}}$"
@@ -59,6 +68,8 @@ def validate_user_name():
     if not re.match(USER_NAME_REGEX, user_name): raise_custom_exception(error, 400)
     return user_name
 
+##############################
+# Validate user last name
 ##############################
 USER_LAST_NAME_MIN = 2
 USER_LAST_NAME_MAX = 20
@@ -70,6 +81,8 @@ def validate_user_last_name():
     return user_last_name
 
 ##############################
+# Validate user email
+##############################
 REGEX_EMAIL = "^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$"
 def validate_user_email():
     error = "email invalid"
@@ -77,6 +90,8 @@ def validate_user_email():
     if not re.match(REGEX_EMAIL, user_email): raise_custom_exception(error, 400)
     return user_email
 
+##############################
+# Validate user password
 ##############################
 USER_PASSWORD_MIN = 8
 USER_PASSWORD_MAX = 50
@@ -88,6 +103,8 @@ def validate_user_password():
     return user_password
 
 ##############################
+# Validate uuid
+##############################
 REGEX_UUID4 = "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
 def validate_uuid4(uuid4 = ""):
     error = f"invalid uuid4"
@@ -96,7 +113,8 @@ def validate_uuid4(uuid4 = ""):
     if not re.match(REGEX_UUID4, uuid4): raise_custom_exception(error, 400)
     return uuid4
 
-
+##############################
+# Validate item images
 ##############################
 UPLOAD_ITEM_FOLDER = './static/dishes'
 ALLOWED_ITEM_FILE_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
@@ -128,7 +146,8 @@ def validate_item_images():
 
     return filenames
 
-    
+##############################
+# Validate item title
 ##############################
 ITEM_TITLE_MIN = 2
 ITEM_TITLE_MAX = 20
@@ -141,6 +160,8 @@ def validate_item_title():
     return item_title
 
 ##############################
+# Validate item description
+##############################
 ITEM_DESCRIPTION_MIN = 2
 ITEM_DESCRIPTION_MAX = 50
 ITEM_DESCRIPTION_REGEX = f"^.{{{ITEM_DESCRIPTION_MIN},{ITEM_DESCRIPTION_MAX}}}$"
@@ -150,6 +171,8 @@ def validate_item_description():
     if not re.match(ITEM_DESCRIPTION_REGEX, item_description): raise_custom_exception(error, 400)
     return item_description
 
+##############################
+# Validate item price
 ##############################
 ITEM_PRICE_MIN = Decimal('0.01')
 ITEM_PRICE_MAX = Decimal('9999.99')
@@ -161,7 +184,8 @@ def validate_item_price():
     if not re.match(ITEM_PRICE_REGEX, item_price_str): raise_custom_exception(error, 400)
     return Decimal(item_price_str)
 
-
+##############################
+# Send verification email
 ##############################
 def send_verify_email(to_email, user_verification_key):
         # Email and password of the senders Gmail account
@@ -191,6 +215,8 @@ def send_verify_email(to_email, user_verification_key):
         return "email sent"
 
 ##############################
+# Send email - user block
+##############################
 def send_email_user_block(user_pk):
         sender_email = "webdevkea2024@gmail.com"
         password = "cjsp pvow yfmq lyio"
@@ -217,6 +243,8 @@ def send_email_user_block(user_pk):
         return "email sent"
 
 ##############################
+# Send email - user unblock
+##############################
 def send_email_user_unblock(user_pk):
         sender_email = "webdevkea2024@gmail.com"
         password = "cjsp pvow yfmq lyio"
@@ -241,6 +269,8 @@ def send_email_user_unblock(user_pk):
 
         return "email sent"
 
+##############################
+# Send email - item block
 ##############################
 def send_email_item_block(item_pk):
         sender_email = "webdevkea2024@gmail.com"
@@ -268,6 +298,8 @@ def send_email_item_block(item_pk):
         return "email sent"
 
 ##############################
+# Send email - item unblock
+##############################
 def send_email_item_unblock(item_pk):
         sender_email = "webdevkea2024@gmail.com"
         password = "cjsp pvow yfmq lyio"
@@ -294,7 +326,8 @@ def send_email_item_unblock(item_pk):
         return "email sent"
 
 ##############################
-
+# Send email - reset password
+##############################
 def send_reset_password_email(to_email, reset_token):
     sender_email = "webdevkea2024@gmail.com"
     password = "cjsp pvow yfmq lyio"
@@ -309,7 +342,7 @@ def send_reset_password_email(to_email, reset_token):
     message["Subject"] = "Password Reset Request"
 
     body = f"""To reset your password, please <a href="http://127.0.0.1/reset-password/{reset_token}">click here</a>
-               This link will expire in 1 hour."""
+                This link will expire in 1 hour."""
     message.attach(MIMEText(body, "html"))
 
     # Connect to Gmail's SMTP server and send the email
@@ -321,9 +354,9 @@ def send_reset_password_email(to_email, reset_token):
 
     return "email sent"
 
-
-##############################
-##############################
+####################################
+# Send email - purchase notification
+####################################
 def send_purchase_notification_email(item_pk):
     # Email and password of the senders Gmail account
     sender_email = "webdevkea2024@gmail.com"
