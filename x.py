@@ -165,8 +165,6 @@ def validate_item_price():
 ##############################
 def send_verify_email(to_email, user_verification_key):
         # Email and password of the senders Gmail account
-        # Enable (turn on) 2 step verification/factor in the google account manager
-        # Visit: https://myaccount.google.com/apppasswords
         sender_email = "webdevkea2024@gmail.com"
         password = "cjsp pvow yfmq lyio"
 
