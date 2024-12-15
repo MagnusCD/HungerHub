@@ -1,6 +1,6 @@
 from flask import make_response, request
 from functools import wraps
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal
 import mysql.connector
 import re
 import os

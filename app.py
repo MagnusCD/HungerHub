@@ -1,4 +1,4 @@
-from flask import Flask, render_template, app, session, redirect, url_for, request
+from flask import Flask, render_template, app, session, redirect, url_for
 from flask_session import Session
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
@@ -489,7 +489,7 @@ def forgot_password():
 
         # Update user with reset token
         q = """UPDATE users
-                SET user_reset_token = %s, user_reset_token_expires = %s 
+                SET user_reset_token = %s, user_reset_token_expires = %s
                 WHERE user_email = %s"""
         cursor.execute(q, (reset_token, reset_token_expires, user_email))
         
