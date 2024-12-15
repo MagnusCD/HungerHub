@@ -50,22 +50,6 @@ def no_cache(view):
     return no_cache_view
 
 ##############################
-def allow_origin(origin="*"):
-    def decorator(f):
-        @wraps(f)
-        def decorated_function(*args, **kwargs):
-            # Call the wrapped function
-            response = make_response(f(*args, **kwargs))
-            # Add Access-Control-Allow-Origin header to the response
-            response.headers["Access-Control-Allow-Origin"] = origin
-            # Optionally allow other methods and headers for full CORS support
-            response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS, PUT, DELETE"
-            response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
-            return response
-        return decorated_function
-    return decorator
-
-##############################
 USER_NAME_MIN = 2
 USER_NAME_MAX = 20
 USER_NAME_REGEX = f"^.{{{USER_NAME_MIN},{USER_NAME_MAX}}}$"
