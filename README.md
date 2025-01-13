@@ -1,4 +1,4 @@
-## Wolt-like webapplication
+## Wolt-like web application
 
 ## Execution
 1. Start Docker Desktop
